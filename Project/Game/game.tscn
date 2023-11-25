@@ -172,13 +172,13 @@ texture = ExtResource("3_axaog")
 script = ExtResource("7_dbnsu")
 
 [node name="SpawnUpper" type="Marker2D" parent="SeaweedSpawner"]
-position = Vector2(600, 350)
+position = Vector2(600, 375)
 
 [node name="SpawnLower" type="Marker2D" parent="SeaweedSpawner"]
 position = Vector2(600, 710)
 
 [node name="Floppy" type="CharacterBody2D" parent="." groups=["Floppy"]]
-position = Vector2(150, 300)
+position = Vector2(150, 301)
 collision_mask = 6
 script = ExtResource("2_tqpfe")
 
@@ -194,7 +194,7 @@ polygon = PackedVector2Array(34, -18, 40, -7, 41, 4, 39, 14, 32, 22, 23, 22, 7, 
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_2detr")
 autoplay = "default"
-frame_progress = 0.0491932
+frame_progress = 0.322528
 
 [node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)

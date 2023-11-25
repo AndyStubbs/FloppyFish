@@ -10,7 +10,7 @@ const images = [
 
 @export var direction: int = 1
 
-const SPEED = 30
+const SPEED = 60
 const WOBBLE = 50
 const WOBBLE_SPEED = PI / 4
 
@@ -23,17 +23,11 @@ var wobble_speed: float
 
 
 func _ready():
-	GameManager.on_game_over.connect( on_game_over )
 	randomize()
 	texture = images[ randi() % images.size() ]
 	width = texture.get_width() * scale.x
 	elapsed = randf_range( -1, 1 )
 	speed = SPEED * randf_range( 0.95, 1 )
-	
-	# Double the speed of the fish after floppy gets hit
-	if not GameManager.get_is_active():
-		speed *= 2
-	
 	wobble = WOBBLE * randf_range( 0.8, 1 )
 	wobble_speed = WOBBLE_SPEED * randf_range( 0.8, 1 )
 	start_y = position.y
@@ -52,6 +46,3 @@ func _process( delta ):
 	if position.x < -width:
 		queue_free()
 
-
-func on_game_over():
-	speed *= 2

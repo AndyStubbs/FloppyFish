@@ -12,13 +12,11 @@ func _process( delta ):
 
 
 func _on_seaweed_top_body_entered( body ):
-	print( "Hit top" )
 	if body.is_in_group( GameManager.GROUP_FLOPPY ):
 		body.was_hit.emit()
 
 
 func _on_seaweed_bottom_body_entered( body ):
-	print( "Hit bottom" )
 	if body.is_in_group( GameManager.GROUP_FLOPPY ):
 		body.was_hit.emit()
 
