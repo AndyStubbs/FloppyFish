@@ -5,10 +5,11 @@ extends CharacterBody2D
 )
 
 const ROTATION_FACTOR = 0.001
+const FLOP_SPEED = -400
 
 func _physics_process( delta ):
 	if Input.is_action_just_pressed( "swim" ):
-		velocity.y = -500
+		velocity.y = FLOP_SPEED
 	else:
 		velocity.y += gravity * delta
 

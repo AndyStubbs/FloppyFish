@@ -1,8 +1,6 @@
 extends Control
 
-var bubble_scene = preload( "res://Main/bubble.tscn" )
-
-@onready var bubbles_container = $BubblesContainer
+var bubble_scene = preload( "res://Shared/bubble.tscn" )
 
 
 func _ready():
@@ -23,4 +21,4 @@ func create_bubble( x, offset_y ):
 	var bubble = bubble_scene.instantiate()
 	bubble.position.x = x
 	bubble.position.y += offset_y
-	bubbles_container.add_child( bubble )
+	add_child( bubble )

@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3hq1vxkx76qw"]
+[gd_scene load_steps=28 format=3 uid="uid://c3hq1vxkx76qw"]
 
-[ext_resource type="Texture2D" uid="uid://cmbttm683ojfc" path="res://Assets/background_01.png" id="1_hhtx0"]
+[ext_resource type="Texture2D" uid="uid://dlqefpgmgb3gn" path="res://Assets/thumbnail_background.png" id="1_0m33x"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="1_sdte8"]
 [ext_resource type="Texture2D" uid="uid://cbv2xd6ub6dal" path="res://Assets/ground_01.png" id="2_ptqlc"]
 [ext_resource type="Script" path="res://Game/fish_spawner.gd" id="2_ql0c6"]
@@ -8,6 +8,115 @@
 [ext_resource type="Script" path="res://Game/scroller.gd" id="2_yg7uc"]
 [ext_resource type="Texture2D" uid="uid://c21koepb00uvy" path="res://Assets/scrolling_layer_01.png" id="3_axaog"]
 [ext_resource type="Texture2D" uid="uid://bmmmklr5d8fbj" path="res://Assets/scrolling_layer_02.png" id="4_8jolm"]
+[ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="4_su04i"]
+[ext_resource type="Script" path="res://Game/seaweed_spawner.gd" id="7_dbnsu"]
+[ext_resource type="Texture2D" uid="uid://uwkdiammqm2m" path="res://Assets/fishRedRight.png" id="10_waubi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymcpw"]
+atlas = ExtResource("10_waubi")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28t6a"]
+atlas = ExtResource("10_waubi")
+region = Rect2(258, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kjbn"]
+atlas = ExtResource("10_waubi")
+region = Rect2(0, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32054"]
+atlas = ExtResource("10_waubi")
+region = Rect2(129, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oof55"]
+atlas = ExtResource("10_waubi")
+region = Rect2(129, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4nh1"]
+atlas = ExtResource("10_waubi")
+region = Rect2(258, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcey5"]
+atlas = ExtResource("10_waubi")
+region = Rect2(0, 258, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmkr3"]
+atlas = ExtResource("10_waubi")
+region = Rect2(129, 258, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiqsb"]
+atlas = ExtResource("10_waubi")
+region = Rect2(0, 258, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscb1"]
+atlas = ExtResource("10_waubi")
+region = Rect2(258, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x5pr"]
+atlas = ExtResource("10_waubi")
+region = Rect2(129, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sku5p"]
+atlas = ExtResource("10_waubi")
+region = Rect2(129, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulxig"]
+atlas = ExtResource("10_waubi")
+region = Rect2(0, 129, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mapo4"]
+atlas = ExtResource("10_waubi")
+region = Rect2(258, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2detr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymcpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28t6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oof55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4nh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcey5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmkr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiqsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jscb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x5pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sku5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulxig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mapo4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpja3"]
 size = Vector2(457, 204)
@@ -15,68 +124,107 @@ size = Vector2(457, 204)
 [node name="Game" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
+modulate = Color(0.572549, 0.866667, 0.992157, 1)
 position = Vector2(225, 400)
-texture = ExtResource("1_hhtx0")
+texture = ExtResource("1_0m33x")
 
-[node name="BackgroundItems" type="Node2D" parent="."]
+[node name="GroundScroller3" type="Node2D" parent="."]
+modulate = Color(0.698039, 0.698039, 0.698039, 1)
+position = Vector2(0, 500)
+script = ExtResource("2_yg7uc")
+speed_scale = 0.7
+
+[node name="LeftTexture" type="Sprite2D" parent="GroundScroller3"]
+position = Vector2(512, 0)
+texture = ExtResource("4_8jolm")
+
+[node name="RightTexture" type="Sprite2D" parent="GroundScroller3"]
+position = Vector2(1532, 0)
+texture = ExtResource("4_8jolm")
+
+[node name="FishSpawner" type="Node2D" parent="."]
+modulate = Color(0.827451, 0.847059, 0.992157, 1)
 script = ExtResource("2_ql0c6")
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="BubbleSpawner" type="Control" parent="."]
+modulate = Color(0.945098, 0.976471, 0.996078, 0.737255)
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_bottom = -1.0
+script = ExtResource("4_su04i")
+
+[node name="GroundScroller2" type="Node2D" parent="."]
+modulate = Color(0.619608, 0.619608, 0.619608, 1)
+position = Vector2(0, 510)
+script = ExtResource("2_yg7uc")
+speed_scale = 0.8
+
+[node name="LeftTexture" type="Sprite2D" parent="GroundScroller2"]
+position = Vector2(512, 0)
+texture = ExtResource("3_axaog")
+
+[node name="RightTexture" type="Sprite2D" parent="GroundScroller2"]
+position = Vector2(1536, 0)
+texture = ExtResource("3_axaog")
+
+[node name="SeaweedSpawner" type="Node2D" parent="."]
+script = ExtResource("7_dbnsu")
+
+[node name="SpawnUpper" type="Marker2D" parent="SeaweedSpawner"]
+position = Vector2(600, 335)
+
+[node name="SpawnLower" type="Marker2D" parent="SeaweedSpawner"]
+position = Vector2(600, 660)
+
+[node name="Floppy" type="CharacterBody2D" parent="." groups=["Floppy"]]
+position = Vector2(150, 300)
+script = ExtResource("2_tqpfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floppy"]
+visible = false
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_sdte8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floppy"]
+polygon = PackedVector2Array(34, -18, 40, -7, 41, 4, 39, 14, 32, 22, 23, 22, 7, 19, -3, 13, -8, 8, -12, 6, -13, 1, -10, -5, -1, -9, 8, -13, 18, -15, 26, -18)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floppy"]
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_2detr")
+autoplay = "default"
+frame_progress = 0.682685
+
+[node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)
-
-[node name="GroundScroller3" type="Node2D" parent="Ground"]
-position = Vector2(0, -190)
-script = ExtResource("2_yg7uc")
-speed = 50.0
-
-[node name="LeftTexture" type="Sprite2D" parent="Ground/GroundScroller3"]
-position = Vector2(512, 0)
-texture = ExtResource("4_8jolm")
-
-[node name="RightTexture" type="Sprite2D" parent="Ground/GroundScroller3"]
-position = Vector2(1536, 0)
-texture = ExtResource("4_8jolm")
-
-[node name="GroundScroller2" type="Node2D" parent="Ground"]
-position = Vector2(0, -190)
-script = ExtResource("2_yg7uc")
-speed = 60.0
-
-[node name="LeftTexture" type="Sprite2D" parent="Ground/GroundScroller2"]
-position = Vector2(512, 0)
-texture = ExtResource("3_axaog")
-
-[node name="RightTexture" type="Sprite2D" parent="Ground/GroundScroller2"]
-position = Vector2(1536, 0)
-texture = ExtResource("3_axaog")
-
-[node name="GroundScroller" type="Node2D" parent="Ground"]
 script = ExtResource("2_yg7uc")
 
-[node name="LeftTexture" type="Sprite2D" parent="Ground/GroundScroller"]
+[node name="LeftTexture" type="Sprite2D" parent="GroundScroller"]
 position = Vector2(256, 0)
 texture = ExtResource("2_ptqlc")
 
-[node name="RightTexture" type="Sprite2D" parent="Ground/GroundScroller"]
+[node name="RightTexture" type="Sprite2D" parent="GroundScroller"]
 position = Vector2(768, 0)
 texture = ExtResource("2_ptqlc")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(225.5, -5)
 shape = SubResource("RectangleShape2D_hpja3")
 
-[node name="Floppy" type="CharacterBody2D" parent="."]
-position = Vector2(150, 300)
-script = ExtResource("2_tqpfe")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floppy"]
-texture = ExtResource("1_sdte8")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floppy"]
-polygon = PackedVector2Array(44, -27, 55, -8, 55, 11, 49, 30, 42, 36, 24, 35, -1, 29, -15, 23, -24, 17, -30, 9, -30, 2, -27, -5, -20, -12, -10, -18, 10, -24, 28, -27)
-
 [node name="FishTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[connection signal="timeout" from="FishTimer" to="BackgroundItems" method="_on_fish_timer_timeout"]
+[node name="BubbleTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SeaweedTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]
+[connection signal="timeout" from="BubbleTimer" to="BubbleSpawner" method="_on_bubble_timeout"]
+[connection signal="timeout" from="SeaweedTimer" to="SeaweedSpawner" method="_on_seaweed_timer_timeout"]

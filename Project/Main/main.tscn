@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cukwsowqjq7r1"]
 
 [ext_resource type="Texture2D" uid="uid://cmbttm683ojfc" path="res://Assets/background_01.png" id="1_d61he"]
-[ext_resource type="Script" path="res://Main/main.gd" id="1_vvuw6"]
+[ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="2_s4mae"]
 [ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="3_0a63s"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="4_fod73"]
 
@@ -128,7 +128,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vvuw6")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 1
@@ -143,6 +142,7 @@ texture = ExtResource("1_d61he")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_s4mae")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -205,4 +205,4 @@ libraries = {
 wait_time = 1.5
 autostart = true
 
-[connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timeout"]
+[connection signal="timeout" from="BubbleTimer" to="BubblesContainer" method="_on_bubble_timeout"]
