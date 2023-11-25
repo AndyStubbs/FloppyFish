@@ -5,6 +5,9 @@ signal was_hit
 @onready var gravity = ProjectSettings.get_setting(
 	"physics/2d/default_gravity"
 )
+@onready var big_bubble_audio = $BigBubbleAudio
+@onready var clank_audio = $ClankAudio
+@onready var bubble_spawner = $"../BubbleSpawner"
 
 
 const ROTATION_FACTOR = 0.001
@@ -12,7 +15,7 @@ const FLOP_SPEED = -400
 var is_active = true
 var _just_swam = false
 var _last_rotation = 0
-
+var bubble_scene = preload( "res://Shared/bubble.tscn" )
 
 func _physics_process( delta ):
 	velocity.y += gravity * delta	
@@ -28,18 +31,23 @@ func _physics_process( delta ):
 		
 func process_input( _delta ):
 	if Input.is_action_just_pressed( "swim" ):
+		big_bubble_audio.play()
 		velocity.y = FLOP_SPEED
 		_just_swam = true
+		bubble_spawner.create_bubble_set_at_position( position )
 	else:
 		_just_swam = false
 
 	var rotation_target = velocity.y * ROTATION_FACTOR
 	_last_rotation = rotation
 	rotation = rotation_target
-	
+
+
 func _on_was_hit():
 	if not is_active:
 		return
+	
+	clank_audio.play()
 	
 	# Fix a bug with floppy rotating after collision and it
 	# looks like collision didn't happen

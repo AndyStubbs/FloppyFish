@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3hq1vxkx76qw"]
+[gd_scene load_steps=43 format=3 uid="uid://c3hq1vxkx76qw"]
 
 [ext_resource type="Texture2D" uid="uid://dlqefpgmgb3gn" path="res://Assets/thumbnail_background.png" id="1_0m33x"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="1_sdte8"]
@@ -11,8 +11,12 @@
 [ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="4_su04i"]
 [ext_resource type="Script" path="res://Game/seaweed_spawner.gd" id="7_dbnsu"]
 [ext_resource type="Texture2D" uid="uid://uwkdiammqm2m" path="res://Assets/fishRedRight.png" id="10_waubi"]
+[ext_resource type="AudioStream" uid="uid://5wxtbk1cw715" path="res://Assets/big-bubble.mp3" id="11_02qgt"]
 [ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="12_57mt3"]
+[ext_resource type="AudioStream" uid="uid://cu4ehncrhtq1k" path="res://Assets/crash.wav" id="12_aq3e3"]
 [ext_resource type="Script" path="res://Game/hud.gd" id="12_nrmqt"]
+[ext_resource type="AudioStream" uid="uid://bhvbrh20s67hb" path="res://Assets/bubbles.mp3" id="15_vw4ul"]
+[ext_resource type="AudioStream" uid="uid://b1pkpqgrbm8bj" path="res://Assets/success.mp3" id="16_726i6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymcpw"]
 atlas = ExtResource("10_waubi")
@@ -294,7 +298,15 @@ polygon = PackedVector2Array(34, -18, 40, -7, 41, 4, 39, 14, 32, 22, 23, 22, 7, 
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_2detr")
 autoplay = "default"
-frame_progress = 0.0854719
+frame_progress = 0.531859
+
+[node name="BigBubbleAudio" type="AudioStreamPlayer" parent="Floppy"]
+stream = ExtResource("11_02qgt")
+volume_db = -28.767
+
+[node name="ClankAudio" type="AudioStreamPlayer" parent="Floppy"]
+stream = ExtResource("12_aq3e3")
+volume_db = -14.604
 
 [node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)
@@ -450,8 +462,21 @@ libraries = {
 [node name="GameOverTimer" type="Timer" parent="HUD"]
 wait_time = 2.0
 
+[node name="HighScoreTimer" type="Timer" parent="HUD"]
+one_shot = true
+
+[node name="HighScoreAudio" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("16_726i6")
+volume_db = -21.685
+
+[node name="BubblesAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_vw4ul")
+volume_db = -23.013
+autoplay = true
+
 [connection signal="was_hit" from="Floppy" to="Floppy" method="_on_was_hit"]
 [connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="BubbleTimer" to="BubbleSpawner" method="_on_bubble_timeout"]
 [connection signal="timeout" from="SeaweedTimer" to="SeaweedSpawner" method="_on_seaweed_timer_timeout"]
 [connection signal="timeout" from="HUD/GameOverTimer" to="HUD" method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="HUD/HighScoreTimer" to="HUD" method="_on_high_score_timer_timeout"]

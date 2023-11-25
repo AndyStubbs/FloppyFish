@@ -8,6 +8,8 @@ extends Control
 @onready var continue_control = $Control/ContinueControl
 @onready var continue_animation = $Control/ContinueAnimation
 @onready var game_over_timer = $GameOverTimer
+@onready var high_score_timer = $HighScoreTimer
+@onready var high_score_audio = $HighScoreAudio
 
 
 var _is_continue_ready = false
@@ -31,11 +33,11 @@ func on_scored():
 
 
 func on_game_over():
-	game_over_timer.start()
 	game_over_label.show()
 	if GameManager.is_high_score():
-		high_score_label.show()
-		high_score_animation.play( "highscore_flash" )
+		high_score_timer.start()
+	else:
+		game_over_timer.start()
 
 
 func _on_game_over_timer_timeout():
@@ -43,4 +45,10 @@ func _on_game_over_timer_timeout():
 	game_over_label.hide()
 	continue_control.show()
 	continue_animation.play( "continue_flash" )
-	
+
+
+func _on_high_score_timer_timeout():
+	high_score_audio.play()
+	high_score_label.show()
+	high_score_animation.play( "highscore_flash" )
+	game_over_timer.start()

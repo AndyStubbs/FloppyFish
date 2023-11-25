@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cukwsowqjq7r1"]
+[gd_scene load_steps=16 format=3 uid="uid://cukwsowqjq7r1"]
 
 [ext_resource type="Texture2D" uid="uid://cmbttm683ojfc" path="res://Assets/background_01.png" id="1_d61he"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_vvuw6"]
 [ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="2_s4mae"]
 [ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="3_0a63s"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="4_fod73"]
+[ext_resource type="AudioStream" uid="uid://bs0glk3cwy1pi" path="res://Assets/game-music-loop.mp3" id="6_80cwk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lkvx0"]
 font = ExtResource("3_0a63s")
@@ -230,5 +231,10 @@ libraries = {
 [node name="BubbleTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_80cwk")
+volume_db = -11.506
+autoplay = true
 
 [connection signal="timeout" from="BubbleTimer" to="BubblesContainer" method="_on_bubble_timeout"]
