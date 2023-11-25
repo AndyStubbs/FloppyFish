@@ -26,7 +26,7 @@ func _physics_process( delta ):
 	if is_on_floor():
 		_on_was_hit()
 		
-func process_input( delta ):
+func process_input( _delta ):
 	if Input.is_action_just_pressed( "swim" ):
 		velocity.y = FLOP_SPEED
 		_just_swam = true

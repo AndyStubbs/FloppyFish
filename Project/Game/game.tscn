@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c3hq1vxkx76qw"]
+[gd_scene load_steps=39 format=3 uid="uid://c3hq1vxkx76qw"]
 
 [ext_resource type="Texture2D" uid="uid://dlqefpgmgb3gn" path="res://Assets/thumbnail_background.png" id="1_0m33x"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="1_sdte8"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="4_su04i"]
 [ext_resource type="Script" path="res://Game/seaweed_spawner.gd" id="7_dbnsu"]
 [ext_resource type="Texture2D" uid="uid://uwkdiammqm2m" path="res://Assets/fishRedRight.png" id="10_waubi"]
+[ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="12_57mt3"]
+[ext_resource type="Script" path="res://Game/hud.gd" id="12_nrmqt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymcpw"]
 atlas = ExtResource("10_waubi")
@@ -121,6 +123,104 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpja3"]
 size = Vector2(457, 204)
 
+[sub_resource type="LabelSettings" id="LabelSettings_5an04"]
+font = ExtResource("12_57mt3")
+font_size = 48
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.913725)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4cfbf"]
+font = ExtResource("12_57mt3")
+font_size = 52
+font_color = Color(1, 1, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.843137)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gwnb"]
+font = ExtResource("12_57mt3")
+font_size = 52
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_5c7cx"]
+resource_name = "highscore_flash"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighScoreLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sn52b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighScoreLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_irp88"]
+_data = {
+"RESET": SubResource("Animation_sn52b"),
+"highscore_flash": SubResource("Animation_5c7cx")
+}
+
+[sub_resource type="Animation" id="Animation_txt6y"]
+resource_name = "continue_flash"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContinueControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ugecj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContinueControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vx1x3"]
+_data = {
+"RESET": SubResource("Animation_ugecj"),
+"continue_flash": SubResource("Animation_txt6y")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
@@ -194,7 +294,7 @@ polygon = PackedVector2Array(34, -18, 40, -7, 41, 4, 39, 14, 32, 22, 23, 22, 7, 
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_2detr")
 autoplay = "default"
-frame_progress = 0.322528
+frame_progress = 0.0854719
 
 [node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)
@@ -227,7 +327,131 @@ autostart = true
 wait_time = 3.0
 autostart = true
 
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_nrmqt")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 4
+
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_5an04")
+
+[node name="Control" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_left = 225.0
+offset_top = 400.0
+offset_right = 225.0
+offset_bottom = 400.0
+
+[node name="HighScoreLabel" type="Label" parent="HUD/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.5
+offset_top = -145.0
+offset_right = 188.5
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "HIGHSCORE!"
+label_settings = SubResource("LabelSettings_4cfbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="HUD/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -13.0
+offset_right = 50.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = SubResource("LabelSettings_5gwnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueControl" type="Control" parent="HUD/Control"]
+visible = false
+anchors_preset = 0
+offset_top = -40.0
+offset_right = 40.0
+
+[node name="ContinueLabel" type="Label" parent="HUD/Control/ContinueControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -59.5
+offset_right = 38.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "TAP"
+label_settings = SubResource("LabelSettings_5gwnb")
+horizontal_alignment = 1
+
+[node name="ContinueLabel2" type="Label" parent="HUD/Control/ContinueControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.5
+offset_top = -4.0
+offset_right = 181.5
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "TO CONTINUE"
+label_settings = SubResource("LabelSettings_5gwnb")
+horizontal_alignment = 1
+
+[node name="HighScoreAnimation" type="AnimationPlayer" parent="HUD/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_irp88")
+}
+
+[node name="ContinueAnimation" type="AnimationPlayer" parent="HUD/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_vx1x3")
+}
+
+[node name="GameOverTimer" type="Timer" parent="HUD"]
+wait_time = 2.0
+
 [connection signal="was_hit" from="Floppy" to="Floppy" method="_on_was_hit"]
 [connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="BubbleTimer" to="BubbleSpawner" method="_on_bubble_timeout"]
 [connection signal="timeout" from="SeaweedTimer" to="SeaweedSpawner" method="_on_seaweed_timer_timeout"]
+[connection signal="timeout" from="HUD/GameOverTimer" to="HUD" method="_on_game_over_timer_timeout"]

@@ -23,4 +23,7 @@ func _on_seaweed_bottom_body_entered( body ):
 
 func on_game_over():
 	set_process( false )
-	
+
+
+func _on_goal_body_entered( _body ):
+	GameManager.increment_score()

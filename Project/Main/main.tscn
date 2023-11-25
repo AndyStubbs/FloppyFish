@@ -1,9 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cukwsowqjq7r1"]
+[gd_scene load_steps=15 format=3 uid="uid://cukwsowqjq7r1"]
 
 [ext_resource type="Texture2D" uid="uid://cmbttm683ojfc" path="res://Assets/background_01.png" id="1_d61he"]
+[ext_resource type="Script" path="res://Main/main.gd" id="1_vvuw6"]
 [ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="2_s4mae"]
 [ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="3_0a63s"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="4_fod73"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkvx0"]
+font = ExtResource("3_0a63s")
+font_size = 32
+font_color = Color(1, 1, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xrpeg"]
 font = ExtResource("3_0a63s")
@@ -128,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vvuw6")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 1
@@ -144,17 +154,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_s4mae")
 
+[node name="HighScoreLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 17.0
+offset_top = 732.0
+offset_right = 161.0
+offset_bottom = 783.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "High: 0"
+label_settings = SubResource("LabelSettings_lkvx0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 125
 theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 125
 
 [node name="TitleLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
