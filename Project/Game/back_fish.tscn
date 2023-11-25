@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://x01v07756hep"]
+
+[ext_resource type="Texture2D" uid="uid://c1wnqdp7ny2q0" path="res://Assets/backFish_01.png" id="1_u2eae"]
+[ext_resource type="Script" path="res://Game/back_fish.gd" id="2_adasv"]
+
+[node name="BackFish" type="Sprite2D"]
+position = Vector2(497, 231)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_u2eae")
+script = ExtResource("2_adasv")
