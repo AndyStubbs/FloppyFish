@@ -172,13 +172,14 @@ texture = ExtResource("3_axaog")
 script = ExtResource("7_dbnsu")
 
 [node name="SpawnUpper" type="Marker2D" parent="SeaweedSpawner"]
-position = Vector2(600, 335)
+position = Vector2(600, 350)
 
 [node name="SpawnLower" type="Marker2D" parent="SeaweedSpawner"]
-position = Vector2(600, 660)
+position = Vector2(600, 710)
 
 [node name="Floppy" type="CharacterBody2D" parent="." groups=["Floppy"]]
 position = Vector2(150, 300)
+collision_mask = 6
 script = ExtResource("2_tqpfe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floppy"]
@@ -193,7 +194,7 @@ polygon = PackedVector2Array(34, -18, 40, -7, 41, 4, 39, 14, 32, 22, 23, 22, 7, 
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_2detr")
 autoplay = "default"
-frame_progress = 0.682685
+frame_progress = 0.0491932
 
 [node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)
@@ -208,7 +209,8 @@ position = Vector2(768, 0)
 texture = ExtResource("2_ptqlc")
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(0, 700)
+position = Vector2(0, 701)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(225.5, -5)
@@ -225,6 +227,7 @@ autostart = true
 wait_time = 3.0
 autostart = true
 
+[connection signal="was_hit" from="Floppy" to="Floppy" method="_on_was_hit"]
 [connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="BubbleTimer" to="BubbleSpawner" method="_on_bubble_timeout"]
 [connection signal="timeout" from="SeaweedTimer" to="SeaweedSpawner" method="_on_seaweed_timer_timeout"]

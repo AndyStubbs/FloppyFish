@@ -2,7 +2,6 @@ extends Node2D
 
 var fish_scene = preload( "res://Game/back_fish.tscn" )
 
-@onready var fish_timer = $"../FishTimer"
 
 func _ready():
 	create_school()

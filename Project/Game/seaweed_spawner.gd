@@ -4,10 +4,12 @@ extends Node2D
 var seaweed_pair_scene = preload( "res://Game/seaweed_pair.tscn" )
 @onready var spawn_upper = $SpawnUpper
 @onready var spawn_lower = $SpawnLower
+@onready var seaweed_timer = $"../SeaweedTimer"
 
 func _ready():
+	GameManager.on_game_over.connect( on_game_over )
 	spawn_seaweed_pair()
-	
+
 
 func spawn_seaweed_pair():
 	var pair = seaweed_pair_scene.instantiate()
@@ -18,3 +20,6 @@ func spawn_seaweed_pair():
 func _on_seaweed_timer_timeout():
 	spawn_seaweed_pair()
 
+
+func on_game_over():
+	seaweed_timer.stop()

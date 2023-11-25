@@ -9,6 +9,7 @@ script = ExtResource("1_tlped")
 
 [node name="SeaweedTop" type="Area2D" parent="."]
 position = Vector2(0, -500)
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="SeaweedTop"]
 texture = ExtResource("1_y1ni0")
@@ -24,3 +25,6 @@ texture = ExtResource("2_l5hn3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SeaweedBottom"]
 polygon = PackedVector2Array(-57, 61, -56, -17, -56, -63, -53, -79, -49, -87, -40, -88, -35, -87, -29, -80, -25, -67, -11, -68, -19, -110, -19, -137, -15, -159, -5, -178, 5, -181, 12, -174, 15, -165, 14, -143, 9, -123, 9, -106, 17, -73, 19, -42, 28, -39, 39, -73, 44, -82, 52, -85, 58, -78, 59, -64, 45, 12, 43, 64, 56, 256, -56, 256)
+
+[connection signal="body_entered" from="SeaweedTop" to="." method="_on_seaweed_top_body_entered"]
+[connection signal="body_entered" from="SeaweedBottom" to="." method="_on_seaweed_bottom_body_entered"]
