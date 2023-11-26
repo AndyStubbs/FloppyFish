@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://uwkdiammqm2m" path="res://Assets/fishRedRight.png" id="10_waubi"]
 [ext_resource type="AudioStream" uid="uid://5wxtbk1cw715" path="res://Assets/big-bubble.mp3" id="11_02qgt"]
 [ext_resource type="AudioStream" uid="uid://dts47ijxppdl3" path="res://Assets/clank.mp3" id="12_7kty5"]
-[ext_resource type="PackedScene" uid="uid://c3ysfl0i0lbw8" path="res://hud.tscn" id="14_ranop"]
+[ext_resource type="PackedScene" uid="uid://c3ysfl0i0lbw8" path="res://Game/hud.tscn" id="14_ranop"]
 [ext_resource type="AudioStream" uid="uid://bhvbrh20s67hb" path="res://Assets/bubbles.mp3" id="15_vw4ul"]
 [ext_resource type="AudioStream" uid="uid://bv373qgaj8bod" path="res://Assets/score.mp3" id="18_j4hcf"]
 
