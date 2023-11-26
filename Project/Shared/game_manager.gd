@@ -14,7 +14,11 @@ var main_scene: PackedScene = preload( "res://Main/main.tscn" )
 var _speed: float
 var _is_active: bool
 var _score: int
-var _high_score = 0
+var _high_score: int
+
+
+func _ready():
+	load_high_score()
 
 
 func load_game_scene():
@@ -38,8 +42,27 @@ func get_score():
 
 func set_score( score ):
 	_score = score
-	_high_score = max( _score, _high_score )
+	if _score > _high_score:
+		_high_score = _score
+		save_high_score()
 	on_scored.emit()
+
+
+func save_high_score():
+	var config = ConfigFile.new()
+	config.set_value( "game", "high_score", _high_score )
+	config.save( "user://scores.cfg" )
+
+
+func load_high_score():
+	var config = ConfigFile.new()
+	
+	var err = config.load( "user://scores.cfg" )
+	if err != OK:
+		_high_score = 0
+		return
+	
+	_high_score = config.get_value( "game", "high_score", 0 )
 
 
 func is_high_score():
@@ -57,7 +80,6 @@ func increment_score():
 func stop_game():
 	_speed = 0
 	on_game_over.emit()
-
 
 
 func set_active():

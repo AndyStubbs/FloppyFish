@@ -23,6 +23,7 @@ var bubble_scene = preload( "res://Shared/bubble.tscn" )
 
 func _ready():
 	GameManager.on_scored.connect( on_scored )
+	velocity.y = FLOP_SPEED
 
 
 func on_scored():
