@@ -1,0 +1,331 @@
+[gd_scene load_steps=22 format=3 uid="uid://c3ysfl0i0lbw8"]
+
+[ext_resource type="Script" path="res://Game/hud.gd" id="1_qbctm"]
+[ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="2_onc71"]
+[ext_resource type="FontFile" uid="uid://bpvykosascp6w" path="res://Assets/VinaSans-Regular.ttf" id="3_kj6qc"]
+[ext_resource type="AudioStream" uid="uid://b1pkpqgrbm8bj" path="res://Assets/success.mp3" id="4_j7gmd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5an04"]
+font = ExtResource("2_onc71")
+font_size = 48
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.913725)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nvx4"]
+font = ExtResource("3_kj6qc")
+font_size = 72
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hlni1"]
+font = ExtResource("3_kj6qc")
+font_size = 72
+font_color = Color(1, 1, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.843137)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gwnb"]
+font = ExtResource("3_kj6qc")
+font_size = 72
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uq6rn"]
+font = ExtResource("3_kj6qc")
+font_size = 54
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_sn52b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighScoreLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5c7cx"]
+resource_name = "highscore_flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighScoreLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_irp88"]
+_data = {
+"RESET": SubResource("Animation_sn52b"),
+"highscore_flash": SubResource("Animation_5c7cx")
+}
+
+[sub_resource type="Animation" id="Animation_ugecj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContinueControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_txt6y"]
+resource_name = "continue_flash"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContinueControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vx1x3"]
+_data = {
+"RESET": SubResource("Animation_ugecj"),
+"continue_flash": SubResource("Animation_txt6y")
+}
+
+[sub_resource type="Animation" id="Animation_gv838"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/GameOverLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f82ah"]
+resource_name = "game_over_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/GameOverLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ob0ua"]
+_data = {
+"RESET": SubResource("Animation_gv838"),
+"game_over_fade_in": SubResource("Animation_f82ah")
+}
+
+[sub_resource type="Animation" id="Animation_5g13v"]
+resource_name = "tap_blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TapLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ehhqi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TapLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vcxgu"]
+_data = {
+"RESET": SubResource("Animation_ehhqi"),
+"tap_blink": SubResource("Animation_5g13v")
+}
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbctm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 4
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_5an04")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 225.0
+offset_top = 400.0
+offset_right = 225.0
+offset_bottom = 400.0
+
+[node name="TapLabel" type="Label" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -45.0
+offset_top = -47.0
+offset_right = 37.0
+offset_bottom = 45.0
+text = "TAP"
+label_settings = SubResource("LabelSettings_3nvx4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -129.0
+offset_right = 189.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "HIGHSCORE!"
+label_settings = SubResource("LabelSettings_hlni1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -13.0
+offset_right = 50.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = SubResource("LabelSettings_5gwnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueControl" type="Control" parent="Control"]
+visible = false
+anchors_preset = 0
+offset_top = 294.0
+offset_right = 40.0
+offset_bottom = 334.0
+
+[node name="ContinueLabel" type="Label" parent="Control/ContinueControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -59.5
+offset_right = 38.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "TAP TO CONTINUE"
+label_settings = SubResource("LabelSettings_uq6rn")
+horizontal_alignment = 1
+
+[node name="HighScoreAnimation" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_irp88")
+}
+
+[node name="ContinueAnimation" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_vx1x3")
+}
+
+[node name="GameOverAnimation" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ob0ua")
+}
+
+[node name="TapAnimation" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_vcxgu")
+}
+
+[node name="GameOverTimer" type="Timer" parent="."]
+
+[node name="HighScoreTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HighScoreAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j7gmd")
+volume_db = -21.685
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="HighScoreTimer" to="." method="_on_high_score_timer_timeout"]

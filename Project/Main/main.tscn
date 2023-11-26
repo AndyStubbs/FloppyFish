@@ -1,34 +1,67 @@
-[gd_scene load_steps=16 format=3 uid="uid://cukwsowqjq7r1"]
+[gd_scene load_steps=20 format=3 uid="uid://cukwsowqjq7r1"]
 
 [ext_resource type="Texture2D" uid="uid://cmbttm683ojfc" path="res://Assets/background_01.png" id="1_d61he"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_vvuw6"]
 [ext_resource type="Script" path="res://Shared/bubble_spawner.gd" id="2_s4mae"]
-[ext_resource type="FontFile" uid="uid://dd8nlbrxnhrrg" path="res://Assets/kenpixel_blocks.ttf" id="3_0a63s"]
+[ext_resource type="Texture2D" uid="uid://sm4qwqy5phbn" path="res://Assets/seaweedGreen1.png" id="4_eqyki"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="4_fod73"]
+[ext_resource type="FontFile" uid="uid://cdt0hca5p4bb2" path="res://Assets/PlayfairDisplay-VariableFont_wght.ttf" id="5_3q3h4"]
+[ext_resource type="Texture2D" uid="uid://deql2gtfcont7" path="res://Assets/seaweedGreen2.png" id="5_gjmhk"]
 [ext_resource type="AudioStream" uid="uid://bs0glk3cwy1pi" path="res://Assets/game-music-loop.mp3" id="6_80cwk"]
+[ext_resource type="FontFile" uid="uid://bpvykosascp6w" path="res://Assets/VinaSans-Regular.ttf" id="6_m3ylu"]
+[ext_resource type="Texture2D" uid="uid://by48uibpmsqml" path="res://Assets/title.png" id="8_cr52b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lkvx0"]
-font = ExtResource("3_0a63s")
-font_size = 32
-font_color = Color(1, 1, 0, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xrpeg"]
-font = ExtResource("3_0a63s")
+font = ExtResource("6_m3ylu")
 font_size = 48
-outline_size = 3
+font_color = Color(1, 1, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
-shadow_color = Color(0, 0, 0, 0.843137)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
-[sub_resource type="LabelSettings" id="LabelSettings_8i0jr"]
-font = ExtResource("3_0a63s")
-font_size = 32
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 0.847059)
+[sub_resource type="LabelSettings" id="LabelSettings_xrpeg"]
+font = ExtResource("5_3q3h4")
+font_size = 72
+font_color = Color(0, 1, 0.262745, 1)
+outline_size = 3
+outline_color = Color(0.00784314, 0.109804, 0.0431373, 1)
+shadow_size = 3
+shadow_color = Color(0.109804, 0.501961, 0.27451, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0y41"]
+font = ExtResource("6_m3ylu")
+font_size = 48
+outline_size = 5
+outline_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="Animation" id="Animation_jo60j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(161, 336)]
+}
 
 [sub_resource type="Animation" id="Animation_rtsux"]
 resource_name = "flop"
@@ -60,37 +93,25 @@ tracks/1/keys = {
 "values": [Vector2(161, 336), Vector2(161, 365), Vector2(161, 336), Vector2(161, 307)]
 }
 
-[sub_resource type="Animation" id="Animation_jo60j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gp8my"]
+_data = {
+"RESET": SubResource("Animation_jo60j"),
+"flop": SubResource("Animation_rtsux")
+}
+
+[sub_resource type="Animation" id="Animation_ut34f"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("MarginContainer/PlayLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(161, 336)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gp8my"]
-_data = {
-"RESET": SubResource("Animation_jo60j"),
-"flop": SubResource("Animation_rtsux")
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_uhdpy"]
@@ -108,21 +129,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ut34f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PlayLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8yqh"]
@@ -155,13 +161,29 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_s4mae")
 
+[node name="SeaweedTexture1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 414.0
+offset_right = 200.0
+offset_bottom = 926.0
+texture = ExtResource("4_eqyki")
+
+[node name="SeaweedTexture2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 448.0
+offset_right = 381.0
+offset_bottom = 960.0
+texture = ExtResource("5_gjmhk")
+
 [node name="HighScoreLabel" type="Label" parent="."]
 visible = false
 layout_mode = 2
 offset_left = 17.0
-offset_top = 732.0
+offset_top = 702.0
 offset_right = 161.0
-offset_bottom = 783.0
+offset_bottom = 765.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "High: 0"
@@ -184,6 +206,7 @@ theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 125
 
 [node name="TitleLabel" type="Label" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "Floppy Fish"
@@ -195,9 +218,17 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 text = "Tap to Play"
-label_settings = SubResource("LabelSettings_8i0jr")
+label_settings = SubResource("LabelSettings_x0y41")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TitleTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 116.0
+offset_right = 429.0
+offset_bottom = 236.0
+texture = ExtResource("8_cr52b")
 
 [node name="FishTexture" type="TextureRect" parent="."]
 layout_mode = 1
@@ -206,10 +237,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0014
-offset_bottom = 64.0
+offset_left = 161.0
+offset_top = 336.0
+offset_right = 289.001
+offset_bottom = 464.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)

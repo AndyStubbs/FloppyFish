@@ -2,6 +2,8 @@ extends Node
 
 signal on_game_over
 signal on_scored
+signal on_game_started
+
 
 const SPEED = 90.0
 const GROUP_FLOPPY = "Floppy"
@@ -16,7 +18,7 @@ var _high_score = 0
 
 
 func load_game_scene():
-	_is_active = true
+	_is_active = false
 	_speed = SPEED
 	get_tree().change_scene_to_packed( game_scene )
 	set_score( 0 )
@@ -55,6 +57,12 @@ func increment_score():
 func stop_game():
 	_speed = 0
 	on_game_over.emit()
+
+
+
+func set_active():
+	_is_active = true
+	on_game_started.emit()
 
 
 func get_is_active():
