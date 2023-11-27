@@ -1,6 +1,9 @@
 extends Node2D
 
 
+var _was_scored = false
+
+
 func _ready():
 	GameManager.on_game_over.connect( on_game_over )
 
@@ -26,4 +29,6 @@ func on_game_over():
 
 
 func _on_goal_body_entered( _body ):
-	GameManager.increment_score()
+	if not _was_scored:
+		GameManager.increment_score()
+		_was_scored = true
