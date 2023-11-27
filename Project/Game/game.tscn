@@ -204,11 +204,11 @@ frame_progress = 0.935506
 
 [node name="BigBubbleAudio" type="AudioStreamPlayer" parent="Floppy"]
 stream = ExtResource("11_02qgt")
-volume_db = -28.767
+volume_db = -23.013
 
 [node name="ClankAudio" type="AudioStreamPlayer" parent="Floppy"]
 stream = ExtResource("12_7kty5")
-volume_db = -14.604
+volume_db = -9.736
 
 [node name="GroundScroller" type="Node2D" parent="."]
 position = Vector2(0, 700)
@@ -246,12 +246,12 @@ offset_bottom = -1.0
 
 [node name="BubblesAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_vw4ul")
-volume_db = -23.013
+volume_db = -10.179
 autoplay = true
 
 [node name="ScoredAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_j4hcf")
-volume_db = -7.524
+volume_db = -4.426
 
 [connection signal="was_hit" from="Floppy" to="Floppy" method="_on_was_hit"]
 [connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]

@@ -325,7 +325,7 @@ one_shot = true
 
 [node name="HighScoreAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_j7gmd")
-volume_db = -21.685
+volume_db = -11.506
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
 [connection signal="timeout" from="HighScoreTimer" to="." method="_on_high_score_timer_timeout"]

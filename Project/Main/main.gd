@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var high_score_label = $HighScoreLabel
+@onready var high_score_label = $Container/HighScoreLabel
 
 
 func _ready():

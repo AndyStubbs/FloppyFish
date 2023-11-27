@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs5egyjm1khwp"
-path="res://.godot/imported/fishRed.png-adb64e7f37c92b51665166ab8c58268d.ctex"
+uid="uid://bimahaykn5vjo"
+path="res://.godot/imported/icon.webp-e94f9a68b0f625a567a797079e4d325f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fishRed.png"
-dest_files=["res://.godot/imported/fishRed.png-adb64e7f37c92b51665166ab8c58268d.ctex"]
+source_file="res://icon.webp"
+dest_files=["res://.godot/imported/icon.webp-e94f9a68b0f625a567a797079e4d325f.ctex"]
 
 [params]
 
