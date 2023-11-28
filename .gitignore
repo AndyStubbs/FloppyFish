@@ -11,3 +11,13 @@ export_presets.cfg
 
 Exports/
 *.keystore
+
+# Android build cache
+*.apk
+*.ap_
+*.aab
+*.aab_
+*.obb
+*.obb_
+
+Project/android/*
