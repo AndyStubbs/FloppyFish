@@ -273,23 +273,23 @@ pivot_offset = Vector2(64, 64)
 texture = ExtResource("4_fod73")
 
 [node name="FadeInAnimation" type="AnimationPlayer" parent="Container"]
-autoplay = "fade_in"
 libraries = {
 "": SubResource("AnimationLibrary_u2uxx")
 }
+autoplay = "fade_in"
 
 [node name="FishAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Container/FishTexture")
-autoplay = "flop"
 libraries = {
 "": SubResource("AnimationLibrary_gp8my")
 }
+autoplay = "flop"
 
 [node name="PlayAnimation" type="AnimationPlayer" parent="."]
-autoplay = "play"
 libraries = {
 "": SubResource("AnimationLibrary_o8yqh")
 }
+autoplay = "play"
 
 [node name="BubbleTimer" type="Timer" parent="."]
 wait_time = 1.5

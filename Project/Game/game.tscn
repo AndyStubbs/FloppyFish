@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3hq1vxkx76qw"]
+[gd_scene load_steps=34 format=3 uid="uid://c3hq1vxkx76qw"]
 
 [ext_resource type="Texture2D" uid="uid://dlqefpgmgb3gn" path="res://Assets/thumbnail_background.png" id="1_0m33x"]
 [ext_resource type="Texture2D" uid="uid://da5lj0yoqteej" path="res://Assets/fishRed_01.png" id="1_sdte8"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dts47ijxppdl3" path="res://Assets/clank.mp3" id="12_7kty5"]
 [ext_resource type="PackedScene" uid="uid://c3ysfl0i0lbw8" path="res://Game/hud.tscn" id="14_ranop"]
 [ext_resource type="AudioStream" uid="uid://bhvbrh20s67hb" path="res://Assets/bubbles.mp3" id="15_vw4ul"]
+[ext_resource type="AudioStream" uid="uid://bs0glk3cwy1pi" path="res://Assets/game-music-loop.mp3" id="17_v8w7a"]
 [ext_resource type="AudioStream" uid="uid://bv373qgaj8bod" path="res://Assets/score.mp3" id="18_j4hcf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymcpw"]
@@ -252,6 +253,10 @@ autoplay = true
 [node name="ScoredAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_j4hcf")
 volume_db = -4.426
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_v8w7a")
+volume_db = -4.5
 
 [connection signal="was_hit" from="Floppy" to="Floppy" method="_on_was_hit"]
 [connection signal="timeout" from="FishTimer" to="FishSpawner" method="_on_fish_timer_timeout"]

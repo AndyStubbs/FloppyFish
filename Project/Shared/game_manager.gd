@@ -89,4 +89,3 @@ func set_active():
 
 func get_is_active():
 	return _is_active
-
