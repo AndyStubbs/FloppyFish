@@ -1,8 +1,7 @@
 # FloppyFish
 
-**FloppyFish** is a fun clone of the classic Flappy Bird game with a fresh underwater twist. Guide your floppy fish through a series of underwater obstacles, score points, and try to beat your high score.
+**FloppyFish** is a fun clone of the classic Flappy Bird game with a fresh underwater twist. Guide your floppy fish through a series of underwater obstacles, score points, and try to beat your high score. Built using *Godot 4.3*.
 
-Built using *Godot 4.3*.
 ---
 
 ## Features
