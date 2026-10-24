@@ -28,7 +28,7 @@
 
 ## Play Online
 You can play the game online at:  
-[Floppy Fish on Andy's Web Games](https://www.andyswebgames.com/games/floppy)
+[https://visualwebguide.com/floppy](https://visualwebguide.com/floppy)
 
 ---
 
